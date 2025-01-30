@@ -1,0 +1,34 @@
+.dashboard {
+    padding: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .title-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .filters {
+    display: flex;
+    gap: 10px;
+  }
+  .filters input,
+  .filters select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .texts{
+    font-size: 1.3rem;
+    font-weight: 650;
+  }

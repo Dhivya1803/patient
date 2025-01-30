@@ -1,0 +1,55 @@
+.date-navigator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .calendar-toggle {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  .calendar-toggle:hover {
+    background-color: #f0f7ff;
+  }
+  .date-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-btn {
+    border: none;
+    background: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  .nav-btn:hover {
+    background-color: #f0f7ff;
+  }
+  .date-display {
+    min-width: 150px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .view-selector select {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+  }
+  .calendar-popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 15px;
+    z-index: 1000;
+  }

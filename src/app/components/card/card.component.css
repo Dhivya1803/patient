@@ -1,0 +1,66 @@
+.card {
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .card-header i {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  .card-header h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  .stats {
+    display: grid;
+    gap: 15px;
+  }
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .circlet{
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    background-color: #CDE6F9;
+    display: flex;
+    justify-content: center;
+  }
+  .circlea{
+        border-radius: 50%;
+        width:30px;
+        height:30px;
+        background-color: #F7EEEE;
+        display: flex;
+        justify-content: center;
+  }
+
+  .circler{
+    background-color: #DCEFE2;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .value , .labelt{
+    color:#004d87;
+    font-weight: 500;
+  }
+  .value.active, .labela {
+    color: #dc3545;
+  }
+  .value.resolved, .labelr{
+    color: #28a745;
+  }

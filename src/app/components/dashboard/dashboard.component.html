@@ -1,0 +1,19 @@
+<div class="dashboard">
+    <div class="dashboard-header">
+      <div class="title-section">
+        <i class="bi bi-list-ul"></i>
+        <h2 class="texts">{{ getHeaderTitle() }}</h2>
+      </div>
+      <app-date-navigator></app-date-navigator>
+    </div>
+    <div class="cards-grid">
+      <app-card *ngFor="let card of cards"
+        [title]="card.title"
+        [icon]="card.icon"
+        [backgroundColor]="card.backgroundColor"
+        [totalComplaints]="card.totalComplaints"
+        [active]="card.active"
+        [resolved]="card.resolved">
+      </app-card>
+    </div>
+  </div>
