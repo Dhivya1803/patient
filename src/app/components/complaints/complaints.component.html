@@ -1,1 +1,103 @@
-<p>complaints works!</p>
+<!-- complaints.component.html -->
+ <div class="tab-space">
+    <!-- Tabs -->
+    <div class="tabs-container">
+        <div 
+          class="tab" 
+          [class.active]="activeTab === 'Active'"
+          (click)="switchTab('Active')"
+        >
+          Active
+        </div>
+        <div 
+          class="tab" 
+          [class.active]="activeTab === 'Resolved'"
+          (click)="switchTab('Resolved')"
+        >
+          Resolved
+        </div>
+      </div>
+ </div>
+<div class="complaints-container" @fadeIn>
+    
+    <div class="complaints-content">
+      <div class="complaints-header">
+        <h2>List Of {{ activeTab }} Complaints</h2>
+        <div class="filters">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input 
+              type="text" 
+              [(ngModel)]="searchQuery"
+              placeholder="Search..."
+              class="search-input"
+            >
+          </div>
+          <select [(ngModel)]="selectedDepartment" class="department-select">
+            <option value="">All Departments</option>
+            <option *ngFor="let dept of departments" [value]="dept">
+              {{ dept }}
+            </option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="complaints-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Ward No - Patient Name</th>
+              <th>Complaints</th>
+              <th>Issue Description</th>
+              <th>Received On</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let complaint of paginatedComplaints" @tableRow>
+              <td>{{ complaint.wardNo }} - {{ complaint.patientName }}</td>
+              <td>{{ complaint.description }}</td>
+              <td>{{ complaint.issueDescription }}</td>
+              <td>{{ complaint.receivedOn }}</td>
+              <td>
+                <span class="status-badge" [class.active]="complaint.status === 'Active' || complaint.status === 'Resolved'">
+                  {{ complaint.status }}
+                </span>
+              </td>
+              <td>
+                <button class="action-button">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="pagination" *ngIf="filteredComplaints.length > 0">
+         <span>{{ ((currentPage - 1) * itemsPerPage) + 1 }}-{{ getMaxItems() }} of {{ filteredComplaints.length }} items</span>
+        <div class="pagination-controls">
+          <button 
+            [disabled]="currentPage === 1"
+            (click)="changePage(currentPage - 1)"
+          >
+            Previous
+          </button>
+          <span class="page-number" 
+            *ngFor="let page of [].constructor(totalPages); let i = index"
+            [class.active]="currentPage === i + 1"
+            (click)="changePage(i + 1)"
+          >
+            {{ i + 1 }}
+          </span>
+          <button 
+            [disabled]="currentPage === totalPages"
+            (click)="changePage(currentPage + 1)"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

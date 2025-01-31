@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +20,8 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { TeamComponent } from './components/team/team.component';
 import { AuditComponent } from './components/audit/audit.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,13 @@ import { NotificationsComponent } from './components/notifications/notifications
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),

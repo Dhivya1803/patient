@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DateService } from '../../date.service';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-date-navigator',
@@ -13,19 +14,19 @@ export class DateNavigatorComponent {
   currentViewMode: 'day' | 'week' | 'month' = 'day';
   formattedDateRange: string = '';
   showCalendar = false;
+  @ViewChild('picker') datePicker!: MatDatepicker<Date>;
+
   private subscriptions: Subscription[] = [];
 
   constructor(private dateService: DateService) {}
 
   ngOnInit() {
-    // Subscribe to date changes
     this.subscriptions.push(
       this.dateService.currentDate$.subscribe(date => {
         this.formattedDateRange = this.dateService.formatDateRange(date);
       })
     );
 
-    // Subscribe to view mode changes
     this.subscriptions.push(
       this.dateService.viewMode$.subscribe(mode => {
         this.currentViewMode = mode;
@@ -49,4 +50,5 @@ export class DateNavigatorComponent {
   toggleCalendar() {
     this.showCalendar = !this.showCalendar;
   }
+
 }

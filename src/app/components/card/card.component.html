@@ -1,4 +1,4 @@
-<div class="card" [ngStyle]="{'background-color': backgroundColor}">
+<div class="card" [ngStyle]="{'background-color': backgroundColor}" (click)="navigateToComplaints()">
     <div class="card-header">
       <i [class]="'bi ' + icon"></i>
       <h3>{{title}}</h3>

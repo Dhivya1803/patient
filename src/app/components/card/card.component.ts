@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -15,4 +16,13 @@ export class CardComponent {
   @Input() active: number = 0;
   @Input() resolved: number = 0;
 
+  constructor(private router: Router) {}
+  navigateToComplaints() {
+    this.router.navigate(['/complaints'], {
+      queryParams: { 
+        department: this.title,
+        tab: 'Active'
+      }
+    });
+  }
 }
