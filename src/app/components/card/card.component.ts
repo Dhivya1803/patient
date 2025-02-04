@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
+
 export class CardComponent {
+
   @Input() title: string = '';
   @Input() icon: string = '';
   @Input() backgroundColor: string = '#fff';
@@ -17,6 +19,7 @@ export class CardComponent {
   @Input() resolved: number = 0;
 
   constructor(private router: Router) {}
+
   navigateToComplaints() {
     this.router.navigate(['/complaints'], {
       queryParams: { 
@@ -25,4 +28,5 @@ export class CardComponent {
       }
     });
   }
+
 }

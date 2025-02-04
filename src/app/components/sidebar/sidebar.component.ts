@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { SidebarService } from '../../sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +8,9 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+  activeItem: string = '';
+  
   menuItems = [
     { label: 'Dashboard', icon: 'bi-house', route: '/dashboard', exact: true },
     { label: 'Complaints', icon: 'bi-exclamation-circle', route: '/complaints', exact: true },
@@ -18,9 +21,17 @@ export class SidebarComponent {
     { label: 'Notifications', icon: 'bi-bell', route: '/notifications', exact: true }
   ];
 
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.activeRoute = event.url;
+      }
+    });
+  }
+
   activeRoute: string = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private sidebarService: SidebarService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.activeRoute = event.url;
@@ -29,6 +40,6 @@ export class SidebarComponent {
   }
 
   isActive(route: string): boolean {
-    return this.activeRoute === route;
+    return this.activeRoute.startsWith(route); // Ensures sub-routes stay active
   }
 }

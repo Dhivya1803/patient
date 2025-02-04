@@ -1,0 +1,27 @@
+<div class="dialog-container">
+      <div class="dialog-header">
+        <h2>Mark As Resolved</h2>
+        <button mat-icon-button (click)="onNoClick()">
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+      
+      <div class="dialog-content">
+        <p>You are changing the status of this complaint to "Resolved".         Do you wish to continue?</p>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Add Notes (Optional)</mat-label>
+          <textarea 
+            matInput 
+            [(ngModel)]="notes" 
+            placeholder="Enter any additional notes..."
+            rows="4"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      
+      <div class="dialog-actions">
+        <button mat-button class="nobtn" (click)="onNoClick()">No</button>
+        <button mat-raised-button color="primary" class="yesbtn" (click)="onYesClick()">Yes</button>
+      </div>
+    </div>

@@ -22,6 +22,9 @@ import { AuditComponent } from './components/audit/audit.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownComponent } from './shared/dropdown/dropdown.component';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,18 +39,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DepartmentsComponent,
     TeamComponent,
     AuditComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    DropdownComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MatDatepickerModule,
-    MatNativeDateModule,
+    MatNativeDateModule, 
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatMenuModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),

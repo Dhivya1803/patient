@@ -41,8 +41,8 @@
           </select>
         </div>
       </div>
-  
-      <div class="complaints-table">
+      
+      <div *ngIf="activeTab === 'Active'">
         <table>
           <thead>
             <tr>
@@ -55,25 +55,60 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let complaint of paginatedComplaints" @tableRow>
+            <tr *ngFor="let complaint of activeComplaints">
               <td>{{ complaint.wardNo }} - {{ complaint.patientName }}</td>
-              <td>{{ complaint.description }}</td>
+              <td>{{ complaint.complaints }}</td>
               <td>{{ complaint.issueDescription }}</td>
               <td>{{ complaint.receivedOn }}</td>
               <td>
-                <span class="status-badge" [class.active]="complaint.status === 'Active' || complaint.status === 'Resolved'">
-                  {{ complaint.status }}
-                </span>
+                <span class="status-badge active">{{ complaint.status }}</span>
               </td>
               <td>
-                <button class="action-button">
+                <button class="action-button" [matMenuTriggerFor]="actionMenu">
                   <i class="bi bi-three-dots-vertical"></i>
                 </button>
+                <mat-menu #actionMenu="matMenu">
+                  <button mat-menu-item (click)="onMarkAsResolved(complaint)">
+                    <i class="bi bi-check2-circle"></i>
+                    <span>Mark As Resolved</span>
+                  </button>
+                  <button mat-menu-item (click)="onView(complaint)">
+                    <i class="bi bi-eye"></i>
+                    <span>View</span>
+                  </button>
+                </mat-menu>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
+      
+      <div *ngIf="activeTab === 'Resolved'">
+        <table>
+          <thead>
+            <tr>
+              <th>Ward No - Patient Name</th>
+              <th>Complaints</th>
+              <th>Resolution Notes</th>
+              <th>Resolved On</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let complaint of resolvedComplaints">
+              <td>{{ complaint.wardNo }} - {{ complaint.patientName }}</td>
+              <td>{{ complaint.complaints }}</td>
+              <td>{{ complaint.resolutionNotes }}</td>
+              <td>{{ complaint.resolvedOn }}</td>
+              <td>
+                <span class="status-badge resolved">{{ complaint.status }}</span>
+              </td>
+     
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
   
       <div class="pagination" *ngIf="filteredComplaints.length > 0">
          <span>{{ ((currentPage - 1) * itemsPerPage) + 1 }}-{{ getMaxItems() }} of {{ filteredComplaints.length }} items</span>
