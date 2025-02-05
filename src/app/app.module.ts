@@ -53,7 +53,7 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     MatFormFieldModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [
     provideClientHydration(withEventReplay()),
